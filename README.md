@@ -66,7 +66,7 @@ https://Xstack.ir
 
 
 ## Report Some Bugs
-Find a Bug? Please, [create an issue](https://github.com/4xmen/v2ray-script/issues) and we'll fix it together for a better template.
+Find a Bug? Please, [create an issue](https://github.com/4xmen/xstack-v2ray-installer/issues) and we'll fix it together for a better template.
 
 ## Support
 

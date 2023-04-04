@@ -68,10 +68,12 @@ https://Xstack.ir
 [GPL](https://www.gnu.org/licenses/gpl-3.0.en.html)
 
 
-
+  
 ## گزارش برخی از اشکالات
-در صورت پیدا کردن اشکال در پروژه , خوشحال میشویم که آنرا در بخش [create an issue](https://github.com/4xmen/v2ray-script/issues) 
+در صورت پیدا کردن اشکال در پروژه , خوشحال میشویم که آنرا در بخش [create an issue](https://github.com/4xmen/xstack-v2ray-installer/issues) 
 با ما درمیان بگذارید تا در کنار هم آنهارا رفع کنیم 
+  
+  
 ## حمایت
 
 برای حمایت از ما کافیست در صورت راضی بودن از پروژه آنرا با دوستان دولوپر خود به اشتراک بگذارید. : )

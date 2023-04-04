@@ -66,7 +66,7 @@ https://Xstack.ir
 
 
 ## Einige Fehler melden
-Fehler finden Bitte [erstellen Sie ein Problem](https://github.com/4xmen/v2ray-script/issues) und wir werden es gemeinsam für eine bessere Vorlage beheben.
+Fehler finden Bitte [erstellen Sie ein Problem](https://github.com/4xmen/xstack-v2ray-installer/issues) und wir werden es gemeinsam für eine bessere Vorlage beheben.
 
 ## Unterstützung
 

@@ -42,7 +42,7 @@ chmod +x xstack-installer.sh
 
 <div align="center">
 
-[![Github](https://img.shields.io/badge/V2ray-Script-black.svg)](https://github.com/4xmen/v2ray-script) &nbsp;&nbsp;&nbsp;
+[![Github](https://img.shields.io/badge/V2ray-Script-black.svg)](https://github.com/4xmen/xstack-v2ray-installer) &nbsp;&nbsp;&nbsp;
 [![GPL License](https://img.shields.io/badge/License-GPL-green.svg)](https://choosealicense.com/licenses/GPL/) &nbsp;&nbsp;&nbsp;
 [![GitHub](https://img.shields.io/badge/Github-Xstack-red.svg)](https://Github.com/Xstack) &nbsp;&nbsp;&nbsp;
 [![Github](https://img.shields.io/badge/Github-4xmen-blue.svg)](https://Github.com/4xmen) &nbsp;&nbsp;&nbsp;

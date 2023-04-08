@@ -22,7 +22,7 @@
 To use this script, you must run the following command
 
 ```shell
-wget https://raw.githubusercontent.com/4xmen/xstack-v2ray-installer/main/xstack-installer.sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/4xmen/xstack-v2ray-installer/main/xstack-installer.sh)"
 chmod +x xstack-installer.sh
 ./xstack-installer.sh
 ```

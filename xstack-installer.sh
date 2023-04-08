@@ -87,6 +87,7 @@ install_check(){
 update_fun(){
     apt-get update
     apt-get upgrade
+    sudo apt install net-tools
 }
 
 

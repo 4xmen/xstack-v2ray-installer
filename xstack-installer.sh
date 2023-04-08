@@ -79,7 +79,7 @@ nano_check(){
 # install wget,curl,certbot,sqlite3,git and then unzip that
 install_check(){
     progress
-    apt-get install wget curl certbot sqlite3 git unzip -y
+    apt-get install wget curl net-tools certbot sqlite3 git unzip -y
 }
 
 
@@ -87,7 +87,6 @@ install_check(){
 update_fun(){
     apt-get update
     apt-get upgrade
-    sudo apt install net-tools
 }
 
 

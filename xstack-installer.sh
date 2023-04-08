@@ -82,7 +82,13 @@ install_check(){
     apt-get install wget curl net-tools certbot sqlite3 git unzip -y
 }
 
+check_files_installer(){
+    FILE=xstack-installer.sh
+    if [[ -f "$FILE" ]]; then
+        rm $FILE
+    fi
 
+}
 # first server update and upgrade
 update_fun(){
     apt-get update
@@ -162,7 +168,7 @@ installXUI() {
             exit 1
             else
             echo -e "${green}[SUCCESS]${clear} Your server has been checked and is ready to install"
-            wget https://raw.githubusercontent.com/HexaSoftwareTech/x-ui/master/install.sh
+            wget -q https://raw.githubusercontent.com/HexaSoftwareTech/x-ui/master/install.sh -O install.sh 
 
             printf "Please enter username:"
             read username

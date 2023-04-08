@@ -168,7 +168,8 @@ installXUI() {
             exit 1
             else
             echo -e "${green}[SUCCESS]${clear} Your server has been checked and is ready to install"
-            wget -q https://raw.githubusercontent.com/HexaSoftwareTech/x-ui/master/install.sh -O install.sh 
+            # wget -q https://raw.githubusercontent.com/HexaSoftwareTech/x-ui/master/install.sh -O install.sh 
+            curl https://raw.githubusercontent.com/HexaSoftwareTech/x-ui/master/install.sh > install.sh 
 
             printf "Please enter username:"
             read username

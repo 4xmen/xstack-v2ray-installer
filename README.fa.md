@@ -26,8 +26,10 @@
 <div dir="ltr">
 
 ```shell
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/4xmen/xstack-v2ray-installer/main/xstack-installer.sh)"
+wget -q https://raw.githubusercontent.com/4xmen/xstack-v2ray-installer/main/xstack-installer.sh -O xstack-installer.sh 
+
 chmod +x xstack-installer.sh
+
 ./xstack-installer.sh
 ```
 </div>

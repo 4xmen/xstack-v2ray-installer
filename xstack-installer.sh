@@ -54,6 +54,7 @@ show_menu(){
     printf "${menu}*         ${RED}X${WHITE}stack plugin started!${menu}            *${normal}\n"
     printf "${menu}*                                           *${normal}\n"
     printf "${menu}*********************************************${normal}\n"
+    printf "${menu}**${number} 0)${menu} Install the script requirements ${normal}\n"
     printf "${menu}**${number} 1)${menu} Setup Domain on IP ${normal}\n"
     printf "${menu}**${number} 2)${menu} Install X-UI ${normal}\n"
     printf "${menu}**${number} 3)${menu} Uninstall X-UI ${normal}\n"
@@ -79,15 +80,13 @@ nano_check(){
 # install wget,curl,certbot,sqlite3,git and then unzip that
 install_check(){
     progress
-    apt-get install wget curl net-tools certbot sqlite3 git unzip -y
+    apt-get install nano wget curl net-tools certbot sqlite3 git unzip -y
 }
 
-check_files_installer(){
-    FILE=xstack-installer.sh
-    if [[ -f "$FILE" ]]; then
-        rm $FILE
-    fi
-
+install_req() {
+        update_fun
+        install_check 
+        nano_check 
 }
 # first server update and upgrade
 update_fun(){
@@ -134,9 +133,6 @@ check_root(){
 # first choice for setup domain on IP
 setupDomain() {
         update_fun
-        install_check 
-        
-        nano_check 
         sleep 1 
         
 
@@ -168,8 +164,7 @@ installXUI() {
             exit 1
             else
             echo -e "${green}[SUCCESS]${clear} Your server has been checked and is ready to install"
-            # wget -q https://raw.githubusercontent.com/HexaSoftwareTech/x-ui/master/install.sh -O install.sh 
-            curl https://raw.githubusercontent.com/HexaSoftwareTech/x-ui/master/install.sh > install.sh 
+            wget https://raw.githubusercontent.com/HexaSoftwareTech/x-ui/master/install.sh
 
             printf "Please enter username:"
             read username
@@ -329,6 +324,10 @@ start_shell
 
 
 case $opt in
+
+  0)
+    install_req
+    ;;
 
   1)
     setupDomain

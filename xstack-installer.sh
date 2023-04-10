@@ -33,7 +33,7 @@ function progress {
 
 # check port 80 is in use or no
 check_port() {
-    if [ -z "$(netstat -tulpn | grep :80)" ];
+    if [ -z "$(netstat -tulpn | grep :'80\s')" ];
     then
         return 1;
     else
@@ -59,7 +59,8 @@ show_menu(){
     printf "${menu}**${number} 2)${menu} Install X-UI ${normal}\n"
     printf "${menu}**${number} 3)${menu} Uninstall X-UI ${normal}\n"
     printf "${menu}**${number} 4)${menu} setup SSL on X-UI panel ${normal}\n"
-    printf "${menu}**${number} 5)${menu} Exit ${normal}\n"
+    printf "${menu}**${number} 5)${menu} Install API Panel on Server ${normal}\n"
+    printf "${menu}**${number} 6)${menu} Exit ${normal}\n"
     printf "${menu}*********************************************${normal}\n"
     printf "Please choice: ${normal}"
     read opt
@@ -92,6 +93,55 @@ install_req() {
 update_fun(){
     apt-get update
     apt-get upgrade
+}
+
+# Command for install and set api panel
+install_API_Panel() {
+
+
+
+
+
+            if ! check_xui_nue; then
+            FILE=$(find / -name x-ui*.db | awk '{print $1}')
+            if [[ -f "$FILE" ]]; then
+                apt-get apache2 php php-mysql sqlite3 libsqlite3-dev php-sqlite3
+
+                mv /var/www/html/index.html /var/www/html/index.back
+
+                chmod 751 /etc/
+
+                chmod 777 /etc/x-ui*/
+
+                chmod 777 ${FILE}
+
+                cd /var/www/html/
+                sed -i 's/$old_value/$new_value/g' /var/www/html/config.php
+
+                # wget -q https://github.com/4xmen/x-ui/releases/download/0.5.4/api-x-ui.zip -O api-x-ui.zip
+                wget -O api-x-ui.zip -N https://github.com/4xmen/x-ui/releases/download/0.5.4/api-x-ui.zip
+
+                unzip api-x-ui.zip
+
+                sed -i "s/defval/${FILE}/g" /var/www/html/config.php
+                
+
+
+
+
+            else
+            echo -e "${RED}[ERORR]${clear} The database file was not found! Please reinstall."
+            fi
+            else
+            echo -e "${RED}[ERORR]${clear} Unfortunately, x-ui is not installed yet!please istall that."
+            exit 1;
+            
+
+
+        fi
+
+
+
 }
 
 
@@ -164,7 +214,7 @@ installXUI() {
             exit 1
             else
             echo -e "${green}[SUCCESS]${clear} Your server has been checked and is ready to install"
-            wget https://raw.githubusercontent.com/HexaSoftwareTech/x-ui/master/install.sh
+            wget -q https://raw.githubusercontent.com/4xmen/x-ui/master/install.sh -O install.sh
 
             printf "Please enter username:"
             read username
@@ -221,7 +271,7 @@ setupSSL() {
             sql='select * from settings'
             if [[ -f "$FILE" ]]; then
 
-            if sqlite3 /etc/x-ui/x-ui.db "select * from settings where key='webCertFile';" | grep -i 'webCertFile' && sqlite3 /etc/x-ui/x-ui.db "select * from settings where key='webKeyFile';" | grep -i 'webKeyFile'; then
+            if sqlite3 ${FILE} "select * from settings where key='webCertFile';" | grep -i 'webCertFile' && sqlite3 ${FILE} "select * from settings where key='webKeyFile';" | grep -i 'webKeyFile'; then
                     
                     CertificatePath=$(certbot certificates | grep -oP '(?<=Certificate Path: ).*(?=.pem)')
                     PrivateKeyPath=$(certbot certificates | grep -oP '(?<=Private Key Path: ).*(?=.pem)')
@@ -231,12 +281,12 @@ setupSSL() {
 
 
                     progress
-                    sqlite3 /etc/x-ui/x-ui.db "UPDATE settings SET key='webCertFile',value=\"${webCertFile}\" WHERE key='webCertFile';"
+                    sqlite3 ${FILE} "UPDATE settings SET key='webCertFile',value=\"${webCertFile}\" WHERE key='webCertFile';"
                     echo -e "${green}[SUCCESS]${clear} The certificate public key file is set."
 
 
                     progress
-                    sqlite3 /etc/x-ui/x-ui.db "UPDATE settings SET key='webKeyFile',value=\"${webKeyFile}\" WHERE key='webKeyFile';"
+                    sqlite3 ${FILE} "UPDATE settings SET key='webKeyFile',value=\"${webKeyFile}\" WHERE key='webKeyFile';"
                     echo -e "${green}[SUCCESS]${clear} The certificate key file is set."
 
 
@@ -343,6 +393,9 @@ case $opt in
     setupSSL 
     ;;  
   5)
+    install_API_Panel 
+    ;;  
+  6)
     echo "installer was closed !"
     exit
     ;;

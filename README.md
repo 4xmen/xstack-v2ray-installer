@@ -22,14 +22,12 @@
 To use this script, you must run the following command
 
 ```shell
-wget -q https://raw.githubusercontent.com/4xmen/xstack-v2ray-installer/main/xstack-installer.sh -O xstack-installer.sh 
-
-chmod +x xstack-installer.sh
-
-./xstack-installer.sh
+bash <(curl -Ls https://raw.githubusercontent.com/4xmen/xstack-v2ray-installer/main/xstack-installer.sh)
 ```
 
-## 
+## !!! First, you must choose option 0 !!!
+
+##
 
 ## Screenshots
 

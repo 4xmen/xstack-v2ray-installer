@@ -116,15 +116,18 @@ install_API_Panel() {
                 chmod 777 ${FILE}
 
                 cd /var/www/html/
-                sed -i 's/$old_value/$new_value/g' /var/www/html/config.php
+                
 
                 # wget -q https://github.com/4xmen/x-ui/releases/download/0.5.4/api-x-ui.zip -O api-x-ui.zip
                 wget -O api-x-ui.zip -N https://github.com/4xmen/x-ui/releases/download/0.5.4/api-x-ui.zip
 
                 unzip api-x-ui.zip
 
-                sed -i "s/defval/${FILE}/g" /var/www/html/config.php
-                
+
+
+                progress
+                SED=$(sed -i "s/defval/${FILE}/g" /var/www/html/config.php)
+                echo $SED
 
 
 

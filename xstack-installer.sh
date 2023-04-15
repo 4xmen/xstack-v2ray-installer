@@ -129,9 +129,10 @@ install_API_Panel() {
                 # SED=$(sed -i "s/\$fileAddress = "defval";/\$fileAddress = \"$FILE\";/" config.php)
                 # SED=$(sed -i "s/\$fileAddress = .*/\$fileAddress = \"$FILE\";/" config.php)
                 # SED=$(grep -q -F '$fileAddress =' config.php && sed -i 's/\$fileAddress = .*/\$fileAddress = "dsdsdsds";/' config.php || echo '$fileAddress not found!')
-                SED=$(grep -q -F '$fileAddress =' config.php && sed -i "s/\(\$fileAddress = \).*/\1\"$FILE\";/" config.php || echo '$fileAddress not found!')
-                echo $SED
-                
+
+                newvalue="FILEs"
+                sed -i "s/\(\$fileAddress\s*=\s*\).*/\1\"$newvalue\";/" config.php
+
 
 
 

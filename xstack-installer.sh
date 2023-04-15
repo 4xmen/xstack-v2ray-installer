@@ -126,7 +126,7 @@ install_API_Panel() {
 
 
                 progress
-                SED=sed -i 's/defval/${FILE}/g' /var/www/html/config.php
+                SED=$(sed -i 's/\$fileAddress = "defval";/\$fileAddress = "${FILE}";/' config.php)
                 echo $SED
 
 

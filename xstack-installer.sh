@@ -103,7 +103,7 @@ install_API_Panel() {
 
 
             if ! check_xui_nue; then
-            FILE=$(find / -name x-ui*.db | awk '{print $1}')
+            FILE=$(find / -name "x-ui*.db*")
             if [[ -f "$FILE" ]]; then
                 apt-get apache2 php php-mysql sqlite3 libsqlite3-dev php-sqlite3
 
@@ -130,9 +130,10 @@ install_API_Panel() {
                 # SED=$(sed -i "s/\$fileAddress = .*/\$fileAddress = \"$FILE\";/" config.php)
                 # SED=$(grep -q -F '$fileAddress =' config.php && sed -i 's/\$fileAddress = .*/\$fileAddress = "dsdsdsds";/' config.php || echo '$fileAddress not found!')
 
-                newvalue="${FILE}"
-                sed -i "s/\(\$fileAddress\s*=\s*\).*/\1\"$newvalue\";/" config.php
-
+                newvalue="88888888"
+                # ee=$(sed -i "s/\(\$fileAddress\s*=\s*\).*/\1\"$newvalue\";/" config.php)
+                ee=$(ls -l)
+                eval $ee
 
 
 

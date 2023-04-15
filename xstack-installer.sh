@@ -121,19 +121,14 @@ install_API_Panel() {
                 # wget -q https://github.com/4xmen/x-ui/releases/download/0.5.4/api-x-ui.zip -O api-x-ui.zip
                 wget -O api-x-ui.zip -N https://github.com/4xmen/x-ui/releases/download/0.5.4/api-x-ui.zip
 
-                unzip api-x-ui.zip
+                unzip -o api-x-ui.zip
 
 
 
                 progress
-                # SED=$(sed -i "s/\$fileAddress = "defval";/\$fileAddress = \"$FILE\";/" config.php)
-                # SED=$(sed -i "s/\$fileAddress = .*/\$fileAddress = \"$FILE\";/" config.php)
-                # SED=$(grep -q -F '$fileAddress =' config.php && sed -i 's/\$fileAddress = .*/\$fileAddress = "dsdsdsds";/' config.php || echo '$fileAddress not found!')
 
-                newvalue="88888888"
-                # ee=$(sed -i "s/\(\$fileAddress\s*=\s*\).*/\1\"$newvalue\";/" config.php)
-                ee=$(ls -l)
-                eval $ee
+                ee=$(sed -i "s|\$fileAddress = .*;|\$fileAddress = '$FILE';|" /var/www/html/config.php)
+                echo $ee
 
 
 
@@ -276,7 +271,7 @@ uninstallXUI() {
 setupSSL() {
 
         if ! check_xui_nue; then
-            FILE=/etc/x-ui/x-ui.db
+            FILE=$(find / -name "x-ui*.db*")
             sql='select * from settings'
             if [[ -f "$FILE" ]]; then
 
@@ -319,11 +314,11 @@ setupSSL() {
                     
 
                     progress
-                    sqlite3 /etc/x-ui/x-ui.db "insert into settings (key,value) values (\"webCertFile\",\"$webCertFile\");"
+                    sqlite3 ${FILE} "insert into settings (key,value) values (\"webCertFile\",\"$webCertFile\");"
                     echo -e "${green}[SUCCESS]${clear} The certificate public key file is set."
 
                     progress
-                    sqlite3 /etc/x-ui/x-ui.db "insert into settings (key,value) values (\"webKeyFile\",\"$webKeyFile\");"
+                    sqlite3 ${FILE} "insert into settings (key,value) values (\"webKeyFile\",\"$webKeyFile\");"
                     echo -e "${green}[SUCCESS]${clear} The certificate key file is set."
 
 

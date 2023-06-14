@@ -68,6 +68,11 @@ https://Xstack.ir
 ## Report Some Bugs
 Find a Bug? Please, [create an issue](https://github.com/4xmen/xstack-v2ray-installer/issues) and we'll fix it together for a better template.
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=4xmen/xstack-v2ray-installer&type=Date)](https://star-history.com/#4xmen/xstack-v2ray-installer&Date)
+
+
 ## Support
 
 Share Our Project For Support Us : )
